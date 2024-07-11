@@ -10,3 +10,5 @@ codebuild_service_role-name = "codebuild_service-eks-dev"
 codepipeline_service_role-name = "codepipeline_service-eks-dev"
 buildspec_path_apply = "dev/buildspec-apply.yml"
 buildspec_path_plan = "dev/buildspec-plan.yml"
+
+tag-prefix = "dev"

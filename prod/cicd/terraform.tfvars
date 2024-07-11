@@ -10,3 +10,6 @@ codebuild_service_role-name = "codebuild_service-eks-prod"
 codepipeline_service_role-name = "codepipeline_service-eks-prod"
 buildspec_path_apply = "prod/buildspec-apply.yml"
 buildspec_path_plan = "prod/buildspec-plan.yml"
+tag-prefix = "prod"
+
+# github_codestar_connection should be done manually

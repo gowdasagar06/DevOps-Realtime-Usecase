@@ -50,5 +50,8 @@ variable "buildspec_path_plan"{
   type    = string
   default = "pre-prod/buildspec-plan.yml"
 }
+variable "tag-prefix"{
+  type    = string
+}
 
 

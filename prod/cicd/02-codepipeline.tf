@@ -5,6 +5,7 @@ data "aws_codestarconnections_connection" "github-cs" {
 resource "aws_codepipeline" "k8s-deployment-codepipeline" {
   name     = var.pipeline-name
   role_arn = aws_iam_role.apps_codepipeline_role.arn
+  pipeline_type = "V2"
   artifact_store {
     type     = "S3"
     location = aws_s3_bucket.artifacts_bucket.id
@@ -14,15 +15,10 @@ resource "aws_codepipeline" "k8s-deployment-codepipeline" {
     git_configuration {
       source_action_name = "source"
       push {
-        branches {
-          includes = [ "main" ]
-        }
-        file_paths {
-          includes = [ "prod" ]
-        }
         tags {
-          includes = ["prod*"]
+          includes = [ "${var.tag-prefix}-*" ]
         }
+        
       }
     }
   }
@@ -100,19 +96,19 @@ resource "aws_codepipeline" "k8s-deployment-codepipeline" {
     }
   }
   
-  depends_on = [
-    aws_sns_topic.manual-approval
-  ]
+  # depends_on = [
+  #   aws_sns_topic.manual-approval
+  # ]
 
 }
 
-resource "aws_sns_topic" "manual-approval" {
-  name = "manual-approval"
-}
+# resource "aws_sns_topic" "manual-approval" {
+#   name = "manual-approval"
+# }
 
-resource "aws_sns_topic_subscription" "email_notification" {
-  topic_arn = aws_sns_topic.manual-approval.arn
-  protocol  = "email"
-  endpoint  = "sagargowda6666@gmail.com"  
-}
+# resource "aws_sns_topic_subscription" "email_notification" {
+#   topic_arn = aws_sns_topic.manual-approval.arn
+#   protocol  = "email"
+#   endpoint  = "sagargowda6666@gmail.com"  
+# }
 
