@@ -109,6 +109,6 @@ resource "aws_codepipeline" "k8s-deployment-codepipeline" {
 # resource "aws_sns_topic_subscription" "email_notification" {
 #   topic_arn = aws_sns_topic.manual-approval.arn
 #   protocol  = "email"
-#   endpoint  = "sagargowda6666@gmail.com"  
+#   endpoint  = "sagargowda6666@gmail.com"     
 # }
 
