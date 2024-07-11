@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "testsagar-123"  
-    key            = "terraform.tfstate"
+    key            = "infra/pre-prod/terraform.tfstate"
     region         = "ap-south-1"
     encrypt        = true
   }
